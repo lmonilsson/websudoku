@@ -291,25 +291,42 @@ var SUDOKU = (function($) {
 	}
 
 	
-	function runInCanvas(drawingCanvas) {
-		var cellSize = 20;
+	function runInCanvas(drawingCanvas, clientSettings) {
+	    var defaultSettings = {
+	        cellSize: 30,
+	        
+	        outerBorderWidth: 2,
+	        cellBorderWidth: 1,
+	        boxBorderWidth: 2,
+	        
+	        activeCellColor: "#efefef",
+	        winCellColor: "lightgreen",
+	        cellFont: "normal 12px Sans-serif",
+	        cellTextColor: "#000000",
+	        conflictCellTextColor: "#cc0000",
+	        fixedCellFont: "bold 12px Sans-serif"
+	    };
+	    
+	    var settings = $.extend({}, defaultSettings, clientSettings);
+	    
+		var cellSize = settings.cellSize;
 		
 		var $canvas = $(drawingCanvas);
 		var canvas = $canvas.get(0); // Make sure that it's not wrapped in a jQuery object.
 		var context = canvas.getContext("2d");
 			
-		var outerBorderWidth = 2;
-		var cellBorderWidth = 1;
-		var boxBorderWidth = 2;
+		var outerBorderWidth = settings.outerBorderWidth;
+		var cellBorderWidth = settings.cellBorderWidth;
+		var boxBorderWidth = settings.boxBorderWidth;
 		var borderWidthPerAxis = 2 * outerBorderWidth + 6 * cellBorderWidth + 2 * boxBorderWidth;
 		var boardSideSize = 9 * cellSize + borderWidthPerAxis;
 		
-		var activeCellBackgroundColor = "lightblue";
-		var cellTextColor = "#000";
-		var cellTextColorConflict = "#c00";
-		var cellFont = "normal 10px Sans-serif";
-		var fixedCellFont = "bold 10px Sans-serif";
-		var winCellColor = "lightgreen";
+		var activeCellBackgroundColor = settings.activeCellColor;
+		var cellTextColor = settings.cellTextColor;
+		var cellTextColorConflict = settings.conflictCellTextColor;
+		var cellFont = settings.cellFont;
+		var fixedCellFont = settings.fixedCellFont;
+		var winCellColor = settings.winCellColor;
 		
 		var board = null;
 		var activeCell = null;
