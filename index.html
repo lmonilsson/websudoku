@@ -14,12 +14,18 @@
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
-    	<h1>Sudoku</h1>
+        <div class="page-content">
+            <h1>Sudoku</h1>
+
+            <canvas id="sudoku-canvas"></canvas>
+
+            <ul class="instructions">
+                <li>Click a cell to select it.</li>
+                <li>Fill the cell using the numeric keys. You can clear a cell by pressing 0, space, or backspace.</li>
+                <li>You can use the arrow keys to change to adjacent cells.</li>
+            </ul>
+        </div>
         
-        <div style="padding-left: 10px;">
-      	  <canvas id="sudoku-canvas"></canvas>
-		</div>
-		
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.10.1.min.js"><\/script>')</script>
         <script src="js/plugins.js"></script>
@@ -27,7 +33,7 @@
         <script src="js/sudoku.js"></script>
         
         <script>
-        	SUDOKU.runInCanvas($("#sudoku-canvas"));
+            SUDOKU.runInCanvas($("#sudoku-canvas"));
         </script>
     </body>
 </html>
