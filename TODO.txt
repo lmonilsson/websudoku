@@ -1,4 +1,3 @@
 - Numbers are not quite centered in their cells.
     - May have to do calculations using context.measureText().
-- Allow configuration from client code.
 - adjustToCanvas flag for automatic cell-sizing when the canvas is pre-sized.
