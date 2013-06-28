@@ -379,12 +379,12 @@ var SUDOKU = (function($) {
                 cellBorderWidth: 1,
                 boxBorderWidth: 2,
                 
+                fontSize: "12px",
+                fontFamily: "Sans-serif",
                 activeCellColor: "#efefef",
                 winCellColor: "lightgreen",
-                cellFont: "normal 12px Sans-serif",
                 cellTextColor: "#000000",
                 conflictCellTextColor: "#cc0000",
-                fixedCellFont: "bold 12px Sans-serif"
             };
             
             var settings = $.extend({}, defaultSettings, clientSettings);
@@ -404,8 +404,8 @@ var SUDOKU = (function($) {
             var activeCellBackgroundColor = settings.activeCellColor;
             var cellTextColor = settings.cellTextColor;
             var cellTextColorConflict = settings.conflictCellTextColor;
-            var cellFont = settings.cellFont;
-            var fixedCellFont = settings.fixedCellFont;
+            var cellFont = "normal " + settings.fontSize + " " + settings.fontFamily;
+            var fixedCellFont = "bold " + settings.fontSize + " " + settings.fontFamily;
             var winCellColor = settings.winCellColor;
             
             var cellPixelPositions = {};
