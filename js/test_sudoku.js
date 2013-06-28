@@ -109,4 +109,13 @@
 		conflicts = board.getConflicts();
 		deepEqual(conflicts, expected)
 	});
+	
+	test("Restart", function() {
+	    board.setCellValue(1, 1, 3);
+	    board.setCellValue(3, 2, 5);
+	    board.restart();
+	    deepEqual(board.getCell(1, 1), new SUDOKU.Cell(1, 1, 0, false));
+	    deepEqual(board.getCell(3, 2), new SUDOKU.Cell(3, 2, 0, false));
+	    deepEqual(board.getCell(8, 1), new SUDOKU.Cell(8, 1, 4, true));
+	});
 }(jQuery));

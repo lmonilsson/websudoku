@@ -17,13 +17,21 @@
         <div class="page-content">
             <h1>Sudoku</h1>
 
-            <canvas id="sudoku-canvas"></canvas>
-
-            <ul class="instructions">
-                <li>Click a cell to select it.</li>
-                <li>Fill the cell using the numeric keys. You can clear a cell by pressing 0, space, or backspace.</li>
-                <li>You can use the arrow keys to change to adjacent cells.</li>
-            </ul>
+            <div style="vertical-align: top;">
+                <canvas id="sudoku-canvas" style="display: inline-block; vertical-align: top;"></canvas>
+                
+                <ul style="margin-top: 0; display: inline-block; vertical-align: top;">
+                    <li>Click a cell to select it.</li>
+                    <li>Fill the cell using the numeric keys. You can clear a cell by pressing 0, space, or backspace.</li>
+                    <li>You can use the arrow keys to change to adjacent cells.</li>
+                </ul>
+            </div>
+            
+            <div style="clear: both;"></div>
+            
+            <div style="margin-top: 10px;">
+                <button id="btnRestart" type="button">Restart</button>
+            </div>
         </div>
         
         <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
@@ -33,7 +41,12 @@
         <script src="js/sudoku.js"></script>
         
         <script>
-            SUDOKU.runInCanvas($("#sudoku-canvas"));
+            var sudokuRunner = new SUDOKU.SudokuRunner();
+            sudokuRunner.runInCanvas($("#sudoku-canvas"));
+            
+            $("#btnRestart").click(function() {
+                sudokuRunner.restart();
+            });
         </script>
     </body>
 </html>
