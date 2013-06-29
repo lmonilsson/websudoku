@@ -76,25 +76,10 @@
 		deepEqual(board.getCell(3, 3), new SUDOKU.Cell(3, 3, 1, true));
 	});
 	
-	test("Check winning condition", function() {
-		var i;
-		var row, col;
-		var nOrig, nSolution;
-		
-		for (i = 0; i < 81; i += 1) {
-			row = Math.floor(i / 9) + 1;
-			col = i % 9 + 1;
-			nOrig  = parseInt(boardDef[i], 10);
-			nSolution = parseInt(solution[i], 10);
-			if (nOrig === 0) {
-				// It should not be won until all values have been put in,
-				strictEqual(board.hasWon(), false);
-				board.setCellValue(row, col, nSolution);
-			}
-		}
-		
-		strictEqual(board.hasWon(), true);
-	});
+    test("Check winning condition", function() {
+        solveBoard();
+        strictEqual(board.hasWon(), true);
+    });
 	
 	test("Conflicts", function() {
 		var expected = [new SUDOKU.Cell(1, 1, 9, false),
@@ -118,4 +103,29 @@
 	    deepEqual(board.getCell(3, 2), new SUDOKU.Cell(3, 2, 0, false));
 	    deepEqual(board.getCell(8, 1), new SUDOKU.Cell(8, 1, 4, true));
 	});
+	
+    test("Restart after winning", function() {
+       solveBoard();
+       deepEqual(board.hasWon(), true);
+       board.restart();
+       deepEqual(board.hasWon(), false);
+    });
+    
+    function solveBoard() {
+        var i;
+        var row, col;
+        var nOrig, nSolution;
+        
+        for (i = 0; i < 81; i += 1) {
+            row = Math.floor(i / 9) + 1;
+            col = i % 9 + 1;
+            nOrig  = parseInt(boardDef[i], 10);
+            nSolution = parseInt(solution[i], 10);
+            if (nOrig === 0) {
+                // It should not be won until all values have been put in,
+                strictEqual(board.hasWon(), false);
+                board.setCellValue(row, col, nSolution);
+            }
+        }
+    }
 }(jQuery));
