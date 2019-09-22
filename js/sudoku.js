@@ -693,6 +693,7 @@ var SUDOKU = (function($) {
         
         this.restart = function() {
             board.restart();
+            conflicts = [];
             runner.drawBoard();
         };
 	}
